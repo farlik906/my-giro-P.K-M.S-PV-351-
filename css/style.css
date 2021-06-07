@@ -1,0 +1,406 @@
+body{
+  background-image: url(tools.png);
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+
+
+
+.header{
+  background-color: grey;
+  font-size: 25px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  align-items: center;
+  min-width: 886px;
+
+}
+
+.info a{
+  padding:  0;
+  margin-right: 40px;
+}
+
+.infoFonts{
+  font-size: 15px;
+  display: flex;
+  color: white;
+  opacity: .8;
+  text-decoration: none;
+  padding: 10px .5% 0px .5%;
+  background: transparent;
+  float: right;
+
+  transition: opacity .5s ;
+
+}
+
+.infoFonts:hover{
+  opacity: 1;
+
+}
+
+.Mygiro{
+  margin: auto 0;
+  display: flex;
+  font-size: 70px;
+  text-decoration: none;
+
+}
+.MegiroLogo{
+  text-decoration: none;
+  color: white;
+  margin-left: 20px;
+
+}
+
+.MegiroLogo:hover{
+  animation : colorLogo 1s ease-in-out infinite;
+}
+
+.infohead{
+  background-color: white;
+  padding: 3;
+  border: 3px double #c3dee9;
+  border-radius: 2px;
+  text-align: right;
+  color: #40767a;
+}
+
+.nuxMain{
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0.5,0); /* Параметры тени */
+      /*background-image:  linear-gradient(to bottom, grey, white);*/
+}
+
+.nux{
+  width: 100%;
+  height: 400px;
+  padding-top: 83px;
+
+  animation : anim 15s linear infinite;
+  background-repeat:no-repeat;
+  background-position:  center ;
+  background-size: cover;
+
+
+
+}
+
+input[type="radio"] {
+  display:none;
+}
+label {
+  width:23%;
+  float:left;
+  text-align:center;
+  background:#ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  color:#222222;
+  padding:0.5%;
+  margin:0.5%;
+  cursor:pointer;
+  opacity: .7;
+}
+input[type="radio"][id="blue"]:checked + label {
+  opacity: 1;
+}
+input[type="radio"][id="blue"]:checked ~ .red, input[type="radio"][id="blue"]:checked ~ .green {
+  display: none;
+}
+input[type="radio"][id="red"]:checked + label {
+  opacity: 1;
+}
+input[type="radio"][id="red"]:checked ~ .blue, input[type="radio"][id="red"]:checked ~ .green {
+  display: none;
+}
+input[type="radio"][id="green"]:checked + label {
+  opacity: 1;
+}
+input[type="radio"][id="green"]:checked ~ .blue, input[type="radio"][id="green"]:checked ~ .red {
+  display: none;
+}
+
+.green {
+  background:white;
+}
+.blue {
+  background:white;
+}
+.red {
+  background:white;
+}
+
+.storeMain{
+  width: 100%;
+}
+
+.product{
+  width: 200px;
+  height: 221px;
+  margin: 22px;
+
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 20px 20px 5px 5px;
+  transition: border-radius .5s;
+}
+
+.product:hover{
+  border-radius: 5px ;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.imgP{
+  width: 200px;
+  height: 200px;
+  border-radius: 20px 20px 0 0;
+
+
+}
+
+
+.buttonUp{
+  position: fixed;
+  top: auto;
+  left: auto;
+  bottom: 0;
+  right: 0;
+  margin: 3px;
+
+}
+
+.reviews{
+  background-color: #eee;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Параметры тени */
+  height: 200px;
+  padding: 20px;
+  margin-top: 5px;
+  margin-left: 25px;
+  margin-right: 30px;
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+}
+
+.rImage{
+  width: 200px;
+  height: 200px;
+  float:  left;
+  margin-left: 20px;
+  border-radius: 360px;
+}
+
+.reviewsText{
+ height: 200px;
+ display: table-cell;
+ vertical-align: middle;
+ font-size: 20px;
+ padding-left: 20px;
+}
+
+/* Базовые стили слоя затемнения и модального окна  */
+.overlay {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+/* фон затемнения */
+    background-color: rgba(0, 0, 0, 0.65);
+    position: fixed; /* фиксированное поцизионирование */
+    cursor: default; /* тип курсара */
+}
+/* активируем слой затемнения */
+.overlay:target {
+    display: block;
+}
+/* стили модального окна */
+.popup {
+    top: -100%;
+    right: 0;
+    left: 50%;
+    font-size: 14px;
+    z-index: 20;
+    margin: 0;
+    width: 85%;
+    min-width: 320px;
+    max-width: 600px;
+/* фиксированное позиционирование, окно стабильно при прокрутке */
+    position: fixed;
+    padding: 15px;
+    border: 1px solid #383838;
+    background: #fefefe;
+/* скругление углов */
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+/* внешняя тень */
+    -webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -webkit-transform: translate(-50%, -500%);
+    -ms-transform: translate(-50%, -500%);
+    -o-transform: translate(-50%, -500%);
+    transform: translate(-50%, -500%);
+    -webkit-transition: -webkit-transform 0.6s ease-out;
+    -moz-transition: -moz-transform 0.6s ease-out;
+    -o-transition: -o-transform 0.6s ease-out;
+    transition: transform 0.6s ease-out;
+}
+/* активируем модальный блок */
+.overlay:target+.popup {
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    top: 20%;
+}
+/* формируем кнопку закрытия */
+.close {
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    padding: 0;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    background-color: rgba(61, 61, 61, 0.8);
+    -webkit-box-shadow: 0px 0px 10px #000;
+    -moz-box-shadow: 0px 0px 10px #000;
+    box-shadow: 0px 0px 10px #000;
+    text-align: center;
+    text-decoration: none;
+    font: 13px/20px 'Tahoma', Arial, sans-serif;
+    font-weight: bold;
+    -webkit-transition: all ease .8s;
+    -moz-transition: all ease .8s;
+    -ms-transition: all ease .8s;
+    -o-transition: all ease .8s;
+    transition: all ease .8s;
+}
+.close:before {
+    color: rgba(255, 255, 255, 0.9);
+    content: "X";
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+    font-size: 12px;
+}
+/* изображения внутри окна */
+.popup img {
+
+    padding:0 10.8em;
+    width: 50%;
+    height: auto;
+}
+/* элементы м-медиа, фреймы */
+.popup iframe {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display:block;
+    margin: auto;
+    min-width: 600px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.des{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+}
+
+.buyPopup{
+  z-index: 21;
+  width: 180px;
+  height:60px;
+  float: right;
+  text-align: center;
+  white-space:nowrap;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+.infocompMain{
+  background-color: #eee;
+  padding: 2%;
+  margin-top: 30px;
+  margin-left: 25px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  border: 2px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.infocompText{
+  width: 50%;
+}
+
+.infocompForm{
+  width: 50%;
+  height: 50%;
+  text-align: right;
+}
+
+.adresImg{
+  border: 1px solid lightgray;
+  width: 70%;
+  margin-left: 13%;
+}
+
+.brands{
+  text-align: center;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+.brandsImg{
+  margin-top: 3%;
+  width: 80%;
+}
+
+/*ANIMATIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONS
+====================================================*/
+
+@keyframes anim {
+
+
+
+  0%  { background-image:  url(giro1.jpg);}
+
+  33% { background-image:  url(giro2.jpg);}
+
+  66% { background-image:  url(giro3.jpg);}
+
+  100% { background-image:  url(giro1.jpg);}
+
+}
+
+@keyframes colorLogo {
+  0% {color: red}
+  20% {color: orange}
+  40% {color: yellow}
+  60% {color: green}
+  80% {color: blue}
+  100% {color: violet}
+}
+
+
+
+
+}
